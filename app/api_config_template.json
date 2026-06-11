@@ -1,0 +1,42 @@
+{
+  "_说明": "API 配置文件模板。复制为 api_config.json 后编辑。API Key 只能通过环境变量设置，不得写入此文件。",
+  "_版本": "2.0",
+
+  "enabled": true,
+  "_enabled_说明": "是否启用 API。SafeFill 默认采用 API-first 模式，建议保持 true。",
+
+  "api_first": true,
+  "_api_first_说明": "API-first 模式。true 时主流程优先使用大模型：ProfileExtract 交给大模型提取，FormReview 交给大模型理解空白表并生成填写方案。false 时回退到本地规则。",
+
+  "user_accepts_api_data_risk": false,
+  "_user_accepts_api_data_risk_说明": "用户是否接受 API 数据发送风险。必须手动改为 true 才真正发送 API 请求。否则仅本地运行。",
+
+  "provider": "openai_compatible",
+  "_provider_说明": "API 提供商类型。支持 openai_compatible（OpenAI 兼容接口）。",
+
+  "endpoint": "",
+  "_endpoint_说明": "API 端点地址。例如 https://api.openai.com/v1/chat/completions",
+
+  "model": "",
+  "_model_说明": "模型名称。例如 gpt-4o",
+
+  "api_key_env": "SECURE_FORM_API_KEY",
+  "_api_key_env_说明": "API Key 的环境变量名。从对应环境变量读取，不得在此文件中填写真实 Key。",
+
+  "_auto_detect_说明": "GitHub 下载后可不填写 endpoint/model。SafeFill 会自动识别 SAFEFILL_API_KEY / SECURE_FORM_API_KEY / OPENAI_API_KEY / DEEPSEEK_API_KEY；如设置 OPENAI_BASE_URL、DEEPSEEK_BASE_URL、SAFEFILL_API_ENDPOINT、OPENAI_MODEL、DEEPSEEK_MODEL、SAFEFILL_API_MODEL，会优先使用这些环境变量。",
+
+  "send_full_documents": true,
+  "_send_full_documents_说明": "是否允许发送完整文档内容（旧表、空白表结构）。true 时大模型能更好地理解表格。",
+
+  "send_vault_profile": true,
+  "_send_vault_profile_说明": "是否将 vault/profile.json 中的个人资料发送给大模型用于字段匹配。",
+
+  "send_blank_form_structure": true,
+  "_send_blank_form_structure_说明": "是否将空白表格的行列结构发送给大模型用于生成填写方案。",
+
+  "log_api_requests": true,
+  "_log_api_requests_说明": "是否将每次 API 请求和返回记录到 api_logs。建议保持 true。",
+
+  "dry_run": false,
+  "_dry_run_说明": "干运行模式。false 时发送真实 API 请求。仅在 user_accepts_api_data_risk=true 时生效。"
+}

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>SafeFill 本地工作台</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<header>
+  <div><h1>SafeFill 本地工作台</h1><p>你的资料只保存在本机。启用 API 后，提取和填表会发送给你配置的大模型服务商。</p></div>
+  <div id="badges"><span id="b-api">API: --</span><span id="b-vault">个人信息库: --</span><span id="b-phase">--</span><a href="https://github.com/WUBING2023/SafeFill" target="_blank" class="github-link" title="SafeFill on GitHub">⭐ SafeFill</a></div>
+</header>
+<div id="layout">
+<div id="steps">
+  <div class="step" id="s1"><div class="s-num">1</div><div class="s-body"><h3>准备个人资料</h3><p>从旧资料中提取个人信息，保存到本地 vault</p><div class="s-info" id="si1"></div><div class="s-btns"><button onclick="run('profile_extract')">提取个人资料</button><button onclick="saveProfile()">Save to Vault</button></div></div></div>
+  <div class="step" id="s2"><div class="s-num">2</div><div class="s-body"><h3>放入要填写的空白表</h3><p>把 .docx / .xlsx 放入 new_forms</p><div class="s-info" id="si2"></div><div class="s-btns"><button onclick="updateStatus()">刷新状态</button></div></div></div>
+  <div class="step" id="s3"><div class="s-num">3</div><div class="s-body"><h3>填写并检查</h3><p>使用 vault + API 自动填写，打开网页检查</p><div class="s-info" id="si3"></div><div class="s-btns"><button class="warn" onclick="run('form_review')">填写并检查</button><span class="hint">可能调用 API 发送资料</span></div></div></div>
+  <div class="step" id="s4"><div class="s-num">4</div><div class="s-body"><h3>导出最终文件</h3><p>根据网页保存的检查结果生成最终 Word / Excel</p><div class="s-info" id="si4"></div><div class="s-btns"><button onclick="run('final_export')">导出最终文件</button></div></div></div>
+  <div class="step" id="s5"><div class="s-num">5</div><div class="s-body"><h3>清理临时文件</h3><p>清理候选、草稿、报告等中间文件，保留 vault 和最终文件</p><div class="s-info" id="si5"></div><div class="s-btns"><button onclick="run('cleaner_preview')">预览可清理文件</button></div></div></div>
+</div>
+<aside id="suggest">
+  <h3>建议下一步</h3>
+  <div id="sg-content">加载中...</div>
+  <button id="sg-btn" style="display:none;width:100%;margin-top:8px" onclick="runSuggestion()"></button>
+</aside>
+</div>
+<div id="log-panel" style="display:none">
+  <div id="log-header" onclick="document.getElementById('log-panel').style.display='none'"><span id="log-title">运行日志</span><span style="float:right;cursor:pointer">收起</span></div>
+  <pre id="log-output">点击按钮查看运行结果。</pre>
+</div>
+<script src="/app.js"></script>
+
+<!-- ProfileSave Conflict Modal -->
+<div id="modal-overlay" style="display:none">
+<div id="modal-box">
+  <h3>Vault Conflict Detected</h3>
+  <div id="modal-body"></div>
+  <div id="modal-btns">
+    <button id="btn-replace" onclick="doReplace()">Replace Vault</button>
+    <button id="btn-fill" onclick="doFillEmpty()">Fill Empty Only</button>
+    <button id="btn-stop" onclick="doStop()">Cancel</button>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

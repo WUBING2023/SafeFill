@@ -1,0 +1,90 @@
+# ============================================================
+# 本地安全填表助手 — .gitignore
+# 目的：防止用户敏感数据被误提交到 Git 仓库
+# ============================================================
+
+# ---- 用户数据目录（包含敏感个人信息） ----
+vault/
+input_forms/
+new_forms/
+candidate_reviews/
+draft_outputs/
+review_results/
+review_html/
+final_outputs/
+filling_reports/
+final_reports/
+api_previews/
+api_results/
+logs/
+api_logs/
+control_runs/
+
+# ---- PDF 提取输出（可能含用户个人信息） ----
+pdf_extract_outputs/
+
+# ---- MinerU 独立虚拟环境（由 tools\install_mineru.ps1 创建） ----
+.venv_mineru/
+
+# ---- 测试样本和报告 ----
+test_samples/
+test_reports/
+test_archive*/
+test_hold*/
+test_temp*/
+
+# ---- 用户配置文件（含 API 配置） ----
+api_config.json
+
+# ---- 用户确认和资料文件 ----
+confirmed_profile.json
+person_*.json
+
+# ---- 运行时生成的数据文件（可能含敏感信息） ----
+api_preview_*.json
+api_result_*.json
+candidate_review_*.json
+filling_report_*.json
+review_result_*.json
+final_report_*.json
+
+# ---- 密钥和凭证 ----
+*.key
+*.pem
+.env
+*.env
+
+# ---- 临时文件 ----
+*.tmp
+~$*
+*.pyc
+__pycache__/
+.pytest_cache/
+*.pyo
+*.swp
+*.swo
+
+# ---- IDE 和编辑器的用户配置 ----
+.vscode/settings.json
+.idea/
+*.code-workspace
+
+# ---- 备份目录 ----
+docs/backups/
+deprecated/
+docs/skills_draft/
+docs/*报告.md
+docs/*验收清单.md
+docs/*归档清单.md
+docs/cleaner_*_report.md
+docs/guard_check_report.md
+
+# ============================================================
+# 注意：以下文件不受 .gitignore 影响，会被 Git 跟踪
+#   SKILL.md, AGENTS.md, README.md
+#   docs/*.md（文档）
+#   app/*.py（核心脚本）
+#   app/web_review/*（网页文件）
+#   app/api_config_template.json（API 配置模板，不含真实 Key）
+#   vault/profiles/profile_template.json（资料模板，不含真实数据）
+# ============================================================

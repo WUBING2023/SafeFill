@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeFill 表格检查</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header id="top-bar">
+<div class="bar-title">SafeFill 表格检查</div>
+<div class="bar-status">
+<span class="status-badge safe">127.0.0.1</span>
+<span class="status-badge safe">不联网</span>
+<span class="status-badge safe">API 关闭</span>
+<a href="https://github.com/WUBING2023/SafeFill" target="_blank" class="github-link" title="SafeFill on GitHub">⭐ SafeFill</a>
+</div>
+</header>
+
+<div id="main-container">
+
+<aside id="sidebar">
+<div class="sidebar-header"><h3>HTML 预览</h3><button id="btn-refresh" title="刷新">&#x21bb;</button></div>
+<div id="preview-list"><p class="empty-hint">加载中...</p></div>
+<div class="sidebar-footer">
+<button id="btn-toggle-all" style="font-size:11px;width:100%;margin-bottom:6px">显示本轮全部</button>
+<button id="btn-old-mode" style="font-size:11px;width:100%">旧版字段报告模式</button>
+</div>
+</aside>
+
+<main id="content">
+<div id="content-placeholder"><p>请从左侧选择一个 HTML 预览</p></div>
+<div id="content-editor" style="display:none">
+<div style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+<span id="editor-title" style="font-weight:600"></span>
+<button id="btn-save-review" class="btn btn-primary" disabled>保存检查结果</button>
+</div>
+<div id="save-status"></div>
+<div id="editor-table" style="overflow-x:auto"></div>
+<div id="textbox-section" style="display:none;margin-top:16px;padding:12px;background:#f8f9fa;border-radius:6px;border:1px solid #e0e0e0">
+<h4 style="margin:0 0 8px 0;color:#1976d2">Word 文本框字段</h4>
+<p style="font-size:11px;color:#888;margin:0 0 8px 0">Word 文本框无法在网页中完全还原版面。SafeFill 会尽量写入简单文本框，复杂文本框请打开草稿 Word 文件检查。</p>
+<div id="textbox-list"></div>
+</div>
+<div class="hint-text" style="margin-top:8px">浅绿=已填 | 浅黄=可编辑 | 点击单元格修改 | 修改后点保存</div>
+</div>
+</main>
+
+</div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="/app.js"></script>
+</body>
+</html>
